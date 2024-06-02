@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  mc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: Minecraft_Server
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+    environment:
+      FOLDER: "plugins"
+      EULA: "TRUE"
+      TYPE: "PURPUR"
+      VERSION: 1.20.6
+      CREATE_CONSOLE_IN_PIPE: true
+    volumes:
+      # attach the relative directory 'data' to the container's /data path
+      - ./data:/data
